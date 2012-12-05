@@ -415,9 +415,10 @@
         <codeStyleSettingsProvider implementation="com.sylvanaar.idea.Lua.lang.formatter.LuaCodeStyleSettingsProvider" />
         <!--<fileTypeIndentOptionsProvider id="Lua" implementation="com.sylvanaar.idea.Lua.lang.formatter.LuaIndentOptionsProvider"/>-->
 
+        <editorActionHandler action="EditorEnter" implementationClass="com.sylvanaar.idea.Lua.lang.formatter.LuaEnterHandler" />
+
         <lang.braceMatcher language="Lua"
                            implementationClass="com.sylvanaar.idea.Lua.lang.LuaBraceMatcher"/>
-
 
         <lang.parserDefinition language="Lua" implementationClass="com.sylvanaar.idea.Lua.lang.parser.LuaParserDefinition"/>
 
