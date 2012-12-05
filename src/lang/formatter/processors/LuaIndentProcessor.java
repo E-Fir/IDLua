@@ -22,6 +22,7 @@ import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.formatter.blocks.LuaFormattingBlock;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaFunctionArguments;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
@@ -79,7 +80,12 @@ public abstract class LuaIndentProcessor implements LuaElementTypes {
 
         return Indent.getNormalIndent();
     }
-    // For common code block
+
+    if (psiParent instanceof LuaFunctionArguments) {
+        return Indent.getNormalIndent();
+    }
+
+      // For common code block
 //    if (BLOCK_SET.contains(astNode.getElementType())) {
 //      return indentForBlock(psiParent, child);
 //    }
