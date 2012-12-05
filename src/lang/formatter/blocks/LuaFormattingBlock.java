@@ -30,6 +30,7 @@ import com.sylvanaar.idea.Lua.lang.formatter.processors.LuaSpacingProcessorBasic
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
+import com.sylvanaar.idea.Lua.lang.psi.lists.LuaFunctionArguments;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaParameterList;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
@@ -149,6 +150,9 @@ public class LuaFormattingBlock implements Block {
       if (psiParent instanceof LuaTableConstructor) {
         return new ChildAttributes(Indent.getNormalIndent(), null);
       }
+    if (psiParent instanceof LuaFunctionArguments) {
+      return new ChildAttributes(Indent.getContinuationIndent(), null);
+    }
     if (LuaElementTypes.BLOCK_SET.contains(astNode.getElementType())) {
       final Alignment align = Alignment.createAlignment();
       return new ChildAttributes(Indent.getNormalIndent(), align);
