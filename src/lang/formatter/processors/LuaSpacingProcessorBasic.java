@@ -119,8 +119,8 @@ public abstract class LuaSpacingProcessorBasic extends SpacingTokens implements 
         if (rightNode.getPsi().getContext() instanceof LuaTableConstructor) {
             if (leftNode.getElementType() == LCURLY) {
                 LuaTableConstructor tc = (LuaTableConstructor) rightNode.getPsi().getContext();
-                if (tc.getInitializers().length==0)
-                    return NO_SPACING;
+//                if (tc.getInitializers().length==0)
+//                    return NO_SPACING;
                 return Spacing.createDependentLFSpacing(1, 1, rightNode.getPsi().getParent().getTextRange(), false, 0);
             }
             if (rightNode.getElementType() == RCURLY) {
